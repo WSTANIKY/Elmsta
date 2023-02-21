@@ -1,0 +1,18 @@
+$xml='http://www.example.com/rss.xml';
+$rss = simplexml_load_string($xml);
+$i = 0;
+foreach ($rss->channel->item as $feedItem) {
+  $i++;
+  echo $title=$feedItem->title;
+  echo '<br>';
+  echo $link=$feedItem->link;
+  echo '<br>';
+  if($feedItem->description !='') {
+    $des=$feedItem->description;
+  } else {
+    $des='';
+  }
+  echo $des;
+  echo '<br>';
+  if($i>5) break;
+}
